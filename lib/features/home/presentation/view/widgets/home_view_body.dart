@@ -1,8 +1,8 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'best_sellers_list.dart';
 import 'custom_app_bar.dart';
 import 'featured_books_list.dart';
-import 'list_best_seller_item.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -23,20 +23,6 @@ class HomeViewBody extends StatelessWidget {
         ])),
         BestSellersList()
       ],
-    );
-  }
-}
-
-class BestSellersList extends StatelessWidget {
-  const BestSellersList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverList.builder(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return const ListBestSellerItem();
-      },
     );
   }
 }
