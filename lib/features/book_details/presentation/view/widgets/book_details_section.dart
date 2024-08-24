@@ -15,7 +15,7 @@ class BookDetailsSection extends StatelessWidget {
         const CustomDetailsAppBar(),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: width * .23),
-            child: const BookCoverItem()),
+            child: BookCoverItem()),
         const SizedBox(height: 24),
         const Text('The Jungle Book', style: TextStyles.style25),
         const SizedBox(height: 6),

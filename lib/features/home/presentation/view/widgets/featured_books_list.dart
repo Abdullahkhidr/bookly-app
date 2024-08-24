@@ -1,8 +1,10 @@
+import 'package:bookly/features/home/domain/entities/book_entity.dart';
 import 'package:bookly/features/home/presentation/view/widgets/book_cover_item.dart';
 import 'package:flutter/material.dart';
 
 class FeaturedBooksList extends StatelessWidget {
-  const FeaturedBooksList({super.key});
+  final List<BookEntity> books;
+  const FeaturedBooksList({super.key, required this.books});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class FeaturedBooksList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return const BookCoverItem();
+          return BookCoverItem(book: books[index]);
         },
       ),
     );

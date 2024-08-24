@@ -2,7 +2,7 @@ import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'best_sellers_list.dart';
 import 'custom_app_bar.dart';
-import 'featured_books_list.dart';
+import 'featured_books_list_bloc_builder.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -14,7 +14,7 @@ class HomeViewBody extends StatelessWidget {
         SliverList(
             delegate: SliverChildListDelegate.fixed([
           CustomAppBar(),
-          FeaturedBooksList(),
+          FeaturedBooksListBlocBuilder(),
           SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
