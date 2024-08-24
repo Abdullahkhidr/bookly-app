@@ -7,7 +7,7 @@ class SearchResultList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.builder(itemBuilder: (context, index) {
-      return BookItemList();
+      return BookItemList(book: null);
     });
   }
 }

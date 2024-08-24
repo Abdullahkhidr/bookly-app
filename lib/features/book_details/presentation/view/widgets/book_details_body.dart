@@ -17,7 +17,7 @@ class BookDetailsBody extends StatelessWidget {
             children: [
               BookDetailsSection(),
               SizedBox(height: 18),
-              BookRating(),
+              BookRating(rating: 0.0, numOfRatings: 0),
               BookAction(),
               Expanded(child: SizedBox(height: 50)),
               SimilarBooksSection(),
