@@ -18,7 +18,8 @@ class HomeRepositoryImpl extends HomeRepository {
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks(
       {int pageNumber = 0}) async {
     try {
-      var localBooks = homeLocalDataSource.fetchFeaturedBooks();
+      var localBooks =
+          homeLocalDataSource.fetchFeaturedBooks(pageNumber: pageNumber);
       if (localBooks.isNotEmpty) {
         return right(localBooks);
       }
