@@ -20,10 +20,12 @@ class BookCoverItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           child: AspectRatio(
               aspectRatio: 2.55 / 4,
-              child: CachedNetworkImage(
-                imageUrl: book?.image ?? '',
-                fit: BoxFit.cover,
-              )),
+              child: book?.image != null
+                  ? CachedNetworkImage(
+                      imageUrl: book!.image!,
+                      fit: BoxFit.cover,
+                    )
+                  : null),
         ),
       ),
     );

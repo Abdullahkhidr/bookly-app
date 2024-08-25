@@ -28,12 +28,16 @@ class _FeaturedBooksListBlocBuilderState
     super.dispose();
   }
 
-  void _onScroll() {
+  Future<void> _onScroll() async {
     var maxScrollExtent = _scrollController.position.maxScrollExtent;
     var pixels = _scrollController.position.pixels;
     if (pixels >= maxScrollExtent * .7) {
-      BlocProvider.of<FeaturedBooksCubit>(context)
-          .fetchFeaturedBooks(pageNumber: nextPage++);
+      var cubit = BlocProvider.of<FeaturedBooksCubit>(context);
+      if (cubit.state is! FeaturedBooksLoading &&
+          cubit.state is! FeaturedBooksPaginationLoading) {
+        await BlocProvider.of<FeaturedBooksCubit>(context)
+            .fetchFeaturedBooks(pageNumber: nextPage++);
+      }
     }
   }
 
@@ -41,12 +45,15 @@ class _FeaturedBooksListBlocBuilderState
   Widget build(BuildContext context) {
     return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
       builder: (context, state) {
-        if (state is FeaturedBooksSuccess) {
-          return FeaturedBooksList(books: state.books);
-        } else if (state is FeaturedBooksFailure) {
+        final cubit = BlocProvider.of<FeaturedBooksCubit>(context);
+        if (state is FeaturedBooksFailure) {
           return Text(state.message);
-        } else {
+        } else if (state is FeaturedBooksLoading ||
+            state is FeaturedBooksInitial) {
           return const Center(child: CircularProgressIndicator());
+        } else {
+          return FeaturedBooksList(
+              books: cubit.books, controller: _scrollController);
         }
       },
     );

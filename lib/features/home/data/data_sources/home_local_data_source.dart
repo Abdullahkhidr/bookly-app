@@ -18,9 +18,13 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
     if (endIndex >= box.values.length) {
       return [];
     }
-    return box.values
-        .toList()
-        .sublist(startIndex, min(box.values.length, endIndex));
+    try {
+      return box.values
+          .toList()
+          .sublist(startIndex, min(box.values.length, endIndex));
+    } catch (e) {
+      return [];
+    }
   }
 
   @override

@@ -28,6 +28,7 @@ class HomeRepositoryImpl extends HomeRepository {
       return right(remoteBooks);
     } catch (e) {
       if (e is DioException) return left(ServerFailure.fromDioException(e));
+      print(e);
       return left(ServerFailure(e.toString()));
     }
   }
