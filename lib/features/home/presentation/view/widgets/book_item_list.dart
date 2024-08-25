@@ -16,7 +16,7 @@ class BookItemList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 24),
       child: GestureDetector(
         onTap: () {
-          GoRouter.of(context).push(AppRouter.kBookDetailsView);
+          GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: book);
         },
         child: Row(
           children: [
